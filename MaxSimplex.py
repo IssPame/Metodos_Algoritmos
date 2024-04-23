@@ -156,6 +156,8 @@ while salidaaux == 1:
         for j in range(num_colum):
             matriz_2[i][j]= None
 
+print("MAXIMIZACION")
 print("Respuestas: ")
 for key, value in respuestas.items():
     print(key + " = ", value)
+#Falta que muestre el precio sombra
