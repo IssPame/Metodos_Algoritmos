@@ -1,6 +1,6 @@
 import numpy as np
-import pandas as pd
-from sklearn.model_selection import train_test_split    
+import pandas as pd #Permite acceder a los datos mediante índices o nombres para filas y columnas.
+from sklearn.model_selection import train_test_split # nos permite dividir un dataset en dos bloques   
 
 #Solicita cantidad de variable y de inecuaciones
 numero_varZ = (int(input("Digite el numero de variables en Z: ")))
