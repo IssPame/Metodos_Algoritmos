@@ -115,8 +115,6 @@ for i in range(num_filas):
                 matriz_1[i][j] = 0
 
 
-
-
 while salidaaux == 1:
     imprimir_matriz(matriz_1)
     encontrar_columpiv(matriz_1)
