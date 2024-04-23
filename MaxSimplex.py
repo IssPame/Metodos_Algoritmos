@@ -82,7 +82,7 @@ def imprimir_matriz(matriz):
     for i in range(num_filas):
         tot= " "
         for j in range(num_colum):
-            tot = tot + str(round(matriz[i][j], 2)) + "   |   "
+            tot = tot + str(round(matriz[i][j], 2)) + "       | "
         print(tot)
     print()
 
@@ -156,6 +156,7 @@ while salidaaux == 1:
         for j in range(num_colum):
             matriz_2[i][j]= None
 
+print("")
 print("MAXIMIZACION")
 print("Respuestas: ")
 for key, value in respuestas.items():
