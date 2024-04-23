@@ -57,6 +57,7 @@ def encontrar_elemento_pivote(matriz):
 
 def fila_entrante(matriznueva,matrizvieja):
     for j in range(num_colum):
+        #Divide la fila pivote por el elemento pivote y reemplaza los resultados en la nueva matriz
         matriznueva[fila_pivot][j] = matrizvieja[fila_pivot][j] / elemento_pivote
 
 
@@ -70,6 +71,7 @@ def hay_negativos(matriznueva):
     negativo = None
     for j in range(num_colum-1):
         if matriznueva[num_filas-1][j] < 0:
+            #Si aún hay negativos en la función objetivo, continua iterando
             salidaaux = 1
             negativo = matriznueva[num_filas-1][j]
         elif negativo == None:
@@ -78,7 +80,7 @@ def hay_negativos(matriznueva):
 
 def imprimir_matriz(matriz):
     for i in range(num_filas):
-        tot= ""
+        tot= " "
         for j in range(num_colum):
             tot = tot + str(round(matriz[i][j], 2)) + "   |   "
         print(tot)
@@ -99,7 +101,8 @@ matriz_1= crear_matriz(matriz_1)
 matriz_2= crear_matriz(matriz_2)
 
 
-print("PROGRAMA METODO SIMPLEX")
+print("METODO SIMPLEX")
+#Solicita valores de las restricciones y Función Objetivo
 for i in range(num_filas):
     for j in range(num_colum):
         if j == 0 and i != num_filas - 1:
