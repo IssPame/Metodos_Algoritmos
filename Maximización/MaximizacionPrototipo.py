@@ -4,9 +4,9 @@ import numpy as np
 
 x, y = sp.symbols('x y')
 
-Fun_Obj_X1 = int(input("Indique el valor de X1 (x) en la funcion objetivo: "))
+Fun_Obj_X1 = float(input("Indique el valor de X1 (x) en la funcion objetivo: "))
 print()
-Fun_Obj_X2 = int(input("Indique el valor de X2 (y) en la funcion objetivo: "))
+Fun_Obj_X2 = float(input("Indique el valor de X2 (y) en la funcion objetivo: "))
 print()
 
 Z = Fun_Obj_X1 * x + Fun_Obj_X2 * y
@@ -14,17 +14,23 @@ print("La funcion objetivo es Z = ", Z)
 print()
 
 #Valor de X1,Y1 y X2,Y2 en las ecuaciones
-Ecu_X1 = int(input("Indique el valor de X1 (x) en la primera ecuacion: "))
+Ecu_X1 = float(input("Indique el valor de X1 (x) en la primera ecuacion: "))
 print()
-Ecu_Y1 = int(input("Indique el valor de X2 (x) en la primera ecuacion: "))
+Ecu_Y1 = float(input("Indique el valor de X2 (x) en la primera ecuacion: "))
 print()
-Val_Ec1 = int(input("Ingrese el valor de la ecuacion: "))
+Val_Ec1 = float(input("Ingrese el valor de la ecuacion: "))
 
-Ecu_X2 = int(input("Indique el valor de X1 (x) en la primera ecuacion: "))
+Ecu_X2 = float(input("Indique el valor de X1 (x) en la primera ecuacion: "))
 print()
-Ecu_Y2 = int(input("Indique el valor de X2 (x) en la primera ecuacion: "))
+Ecu_Y2 = float(input("Indique el valor de X2 (x) en la primera ecuacion: "))
 print()
-Val_Ec2 = int(input("Ingrese el valor de la ecuacion: "))
+Val_Ec2 = float(input("Ingrese el valor de la ecuacion: "))
+
+
+#Restricciones
+
+Rest1 = float(input("Ingrese el valor de la primera restriccion: "))
+Rest2 = float(input("Ingrese el valor de la segunda restriccion: "))
 
 #Ecuaciones
 Ec1 = sp.Eq(Ecu_X1 * x + Ecu_Y1 * y , Val_Ec1)
@@ -52,15 +58,15 @@ Valor_Y2 = (Val_Ec2 - Ecu_X2 * Valor_X) / Ecu_Y2
 #Region factible
 RegFac = np.minimum(Valor_Y1, Valor_Y2)
 
-x = 0
-y= 0
-
 # Gráfico
 plt.figure(figsize=(10, 10))
 
 # Restricciones
 plt.plot(Valor_X, Valor_Y1, label='{}x + {}y = 100'.format(Ecu_X1, Ecu_Y1), color='blue')
 plt.plot(Valor_X, Valor_Y2, label='{}x + {}y = 80'.format(Ecu_X2, Ecu_Y2), color='green')
+
+plt.axvline(x=Rest1, color='orange', linestyle='--', label='x1 ≤ {}'.format(Rest1))
+plt.axhline(y=Rest2, color='purple', linestyle='--', label='x2 ≤ {}'.format(Rest2))
 
 #Pinta region factible
 plt.fill_between(Valor_X, RegFac, color='gray', alpha=0.5, label='Región factible')
