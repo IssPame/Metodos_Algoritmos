@@ -2,8 +2,11 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split    
 
+#Solicita cantidad de variable y de inecuaciones
 numero_varZ = (int(input("Digite el numero de variables en Z: ")))
 numero_inec = (int(input("Digite el numero de inecuaciones: ")))
+
+#Dimensión de matrices
 num_filas = numero_inec + 1
 num_colum = numero_inec + numero_varZ + 2
 matriz_1 = []
@@ -23,6 +26,7 @@ def crear_matriz(matriz):
 def encontrar_columpiv(matriz):
     num_pivoteZ = 0
     global colum_pivote
+    #Recorre las columnas para encontrar columna pivote
     for j in range(num_colum):
         if matriz[num_filas - 1][j] < 0 and matriz[num_filas - 1][j] < num_pivoteZ:
             num_pivoteZ = matriz[num_filas - 1][j]
@@ -31,8 +35,11 @@ def encontrar_columpiv(matriz):
 def encontrar_elemento_pivote(matriz):
     global fila_pivot
     num_menor = 1000
+    #Recorre las filas para encontrar el elemento pivote 
     for i in range(num_filas - 1):
         if matriz[i][colum_pivote]==0 or matriz[i][num_colum - 1] / matriz[i][colum_pivote] < 0:
+            #Si el elemento es = 0 o la division entre el elemento del lado der y el elem de la columna pivote es negativo
+            #Entonces continua buscando
             continue
         else:
             if i == 0:
@@ -40,6 +47,7 @@ def encontrar_elemento_pivote(matriz):
                 fila_pivot = i
                 elemento_pivote = matriz_1[i][colum_pivote]
             elif matriz[i][num_colum - 1] / matriz[i][colum_pivote] < num_menor:
+                #Divide el lado der y la columna pivote para encontrar el menor numero y pivotear respecto a este
                 num_menor = matriz[i][num_colum - 1] / matriz[i][colum_pivote]
                 fila_pivot = i
                 elemento_pivote = matriz[i][colum_pivote]
